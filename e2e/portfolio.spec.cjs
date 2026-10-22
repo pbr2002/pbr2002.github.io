@@ -9,8 +9,8 @@ test('switches the full page language and remembers the choice', async ({ page }
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page).toHaveTitle(/Portfolio/);
   await expect(page.getByRole('button', { name: 'Switch to English' })).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('heading', { name: 'Bilingual Interactive Portfolio Website' })).toBeVisible();
-  await expect(page.locator('#experience')).toContainText('eight Playwright end-to-end tests');
+  await expect(page.locator('#projects').getByRole('heading', { name: 'Bilingual, interactive personal portfolio website' })).toBeVisible();
+  await expect(page.locator('#projects')).toContainText('eight Playwright end-to-end tests');
 
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -27,13 +27,10 @@ test('all in-page links lead to an existing section', async ({ page }) => {
   );
   expect(linksResolve).toBe(true);
 
-  await page.getByRole('link', { name: '经历' }).click();
-  await expect(page).toHaveURL(/#experience$/);
-  await expect(page.locator('#experience')).toBeVisible();
-
   await page.getByRole('link', { name: /项目作品/ }).click();
   await expect(page).toHaveURL(/#projects$/);
   await expect(page.locator('#projects')).toBeVisible();
+  await expect(page.locator('#projects .portfolio-project')).toContainText('中英双语交互式');
 });
 
 test('external links opened in a new tab use safe rel attributes', async ({ page }) => {
@@ -45,7 +42,7 @@ test('external links opened in a new tab use safe rel attributes', async ({ page
     }).map(link => link.href),
   );
   expect(unsafeLinks).toEqual([]);
-  await expect(page.locator('#experience a[href="https://github.com/pbr2002/pbr2002.github.io"]')).toHaveAttribute('target', '_blank');
+  await expect(page.locator('#projects a[href="https://github.com/pbr2002/pbr2002.github.io"]')).toHaveAttribute('target', '_blank');
   await expect(page.locator('a[href="mailto:pbr130922@gmail.com"]')).toHaveCount(2);
 });
 
