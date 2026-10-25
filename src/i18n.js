@@ -1,6 +1,7 @@
 // Translate text nodes in place so the globe, icons and animation targets survive switching.
 const translations = new Map(Object.entries({
 '跳到正文':'Skip to content',
+'项目目标':'Goal', '实现方式':'Implementation', '验证方式':'Verification',
 '关于我':'About', '项目作品':'Projects', '联系我':'Contact',
 'UNSW SYDNEY · 信息技术硕士在读':'UNSW SYDNEY · MASTER OF INFORMATION TECHNOLOGY',
 '用代码，':'Code.', '探索':'Explore.', '智能的无限可能':'The possibilities of AI', '。':'.',
@@ -11,7 +12,7 @@ const translations = new Map(Object.entries({
 '保持好奇，':'Stay curious. ', '持续探索。':'Keep exploring.',
 '从数据科学，到信息技术。':'From data science to information technology.',
 '在学习与实践中，拓展技术的边界。':'Learning by doing. Exploring what comes next.',
-'我的学习坐标':'WHERE I STUDY', '拖动地球 · 探索视角':'Drag to explore the globe',
+'我的学习坐标':'WHERE I STUDY', '拖动或使用方向键 · 探索视角':'Drag or use arrow keys to explore',
 '从杨凌，':'From Yangling,', '到悉尼。':'to Sydney.',
 '本科阶段':'Undergraduate', '硕士阶段':'Master’s',
 '本科和硕士学习地点':'Undergraduate and postgraduate study locations',

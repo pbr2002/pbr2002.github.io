@@ -54,3 +54,11 @@ html[lang="en"] .education-heading h3{font-size:21px}html[lang="en"] .education-
 .portfolio-info .project-tags{row-gap:7px}
 @media(max-width:900px){.portfolio-window{width:78%;max-width:520px}.portfolio-screen{min-height:205px}.portfolio-globe{width:clamp(100px,18vw,145px)}}
 @media(max-width:600px){.portfolio-window{width:87%;transform:perspective(900px) rotateY(-3deg) rotateX(2deg)}.portfolio-window-bar{height:32px;gap:8px;padding:0 9px;font-size:8px}.portfolio-languages{font-size:7px}.portfolio-screen{min-height:165px;grid-template-columns:minmax(0,1fr) 88px;gap:7px;padding:16px 12px}.portfolio-screen-copy strong{margin-top:8px;font-size:15px;line-height:1.55}.portfolio-mini-tags{margin-top:10px}.portfolio-mini-tags i{font-size:6px;padding:3px 5px}.portfolio-globe{width:82px}.portfolio-window-footer{font-size:7px;padding:8px 10px}.portfolio-info h3{font-size:23px}.portfolio-info .project-tags{margin-top:17px;margin-bottom:21px}.project-date{font-size:9px}}
+
+/* Readable project descriptions, shared by both languages. */
+.project-detail{margin:18px 0}
+.project-detail h4{margin:0 0 5px;font-size:11px;font-weight:500;letter-spacing:1px;color:#c4b2dd}
+.project-info .project-detail p{font-size:14px;line-height:1.85;color:#b8b1c8;margin:0;overflow-wrap:anywhere}
+.project-tags span{font-size:11px;padding:7px 10px}
+#globe{touch-action:pan-y}
+@media(max-width:600px){.project-info .project-detail p{font-size:14px;line-height:1.85}.project-tags span{font-size:11px;padding:6px 9px}.project-detail{margin:16px 0}.language-switch button{min-width:34px;min-height:34px}}

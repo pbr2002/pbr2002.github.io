@@ -1,7 +1,8 @@
 import {statSync} from 'node:fs';
 
 const budgets = [
-  {file: 'dist/assets/main.js', maxBytes: 700 * 1024},
+  {file: 'dist/assets/main.js', maxBytes: 150 * 1024},
+  {file: 'dist/assets/globe.js', maxBytes: 550 * 1024},
   {file: 'dist/assets/style.css', maxBytes: 50 * 1024},
   {file: 'dist/index.html', maxBytes: 20 * 1024},
 ];

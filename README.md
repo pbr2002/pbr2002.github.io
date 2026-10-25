@@ -8,9 +8,9 @@ A bilingual Chinese/English portfolio for Pang Boren, an Information Technology 
 
 - Full-page Chinese and English language toggle.
 - Animated star-field, grid, light beams, and an interactive Three.js point-cloud globe with broad study-location markers for Yangling and Sydney.
-- Project cards for diffusion-based person re-identification research and the Video Review Assistant.
+- Three project cards: diffusion-based person re-identification research, the Video Review Assistant, and this interactive portfolio. Each groups factual descriptions into goals, implementation, and verification where applicable.
 - Responsive layout, keyboard-accessible controls, reduced-motion support, and a copy-email interaction.
-- Playwright checks for language switching, navigation, safe external links, reduced motion, WebGL fallback, JavaScript errors, and 360/375px layouts.
+- Playwright checks for language switching, navigation, safe external links, reduced motion, a labeled static SVG WebGL fallback, email copy success/failure, JavaScript errors, and Chinese/English 360/375px layouts.
 - axe accessibility scans in Chinese and English, plus deterministic size budgets for the production JavaScript, CSS, and HTML.
 - Static build with no runtime server or API keys.
 
@@ -30,7 +30,7 @@ A bilingual Chinese/English portfolio for Pang Boren, an Information Technology 
 
 ## Run locally
 
-Requirements: Node.js 20 or later.
+Requirements: Node.js 20 or later and Python 3 (for the preview server).
 
 ```sh
 npm ci
@@ -47,7 +47,7 @@ npx playwright install chromium
 npm test
 ```
 
-`npm test` rebuilds the site, checks that `main.js` stays below 700 KiB, `style.css` below 50 KiB, and `index.html` below 20 KiB, then runs the Playwright and axe tests. Failure details are saved in `test-results/`.
+`npm test` rebuilds the site, checks that `main.js` stays below 150 KiB, the deferred `globe.js` below 550 KiB, `style.css` below 50 KiB, and `index.html` below 20 KiB, then runs the Playwright and axe tests. Failure details are saved in `test-results/`.
 
 ## Deploy
 
@@ -65,3 +65,10 @@ build.mjs            Builds the static dist/ output
 playwright.config.cjs Browser-test configuration
 .github/workflows/   Verification and GitHub Pages deployment
 ```
+
+## Rendering and accessibility decisions
+
+- The main entry keeps navigation, translation, and contact actions independent of Three.js. The globe bundle loads only when its canvas intersects the viewport, with no remote textures or API keys.
+- The 3D render loop stops outside the viewport, in hidden tabs, and under reduced motion. System motion changes apply live; dragging, arrow keys, and resizing can still request a static redraw.
+- If the 3D bundle fails or WebGL is unavailable/lost, a static SVG shows Yangling and Sydney with accurate bilingual labels rather than claiming drag interaction.
+- Eight Playwright scenarios include real WebGL draw-call checks for motion changes, lazy loading, static fallback content, both mobile languages, and email-copy success/failure. Automated axe scans complement these checks; they do not establish complete accessibility conformance.
